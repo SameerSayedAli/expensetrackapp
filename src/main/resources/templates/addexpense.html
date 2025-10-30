@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+
+        div.form-container{
+              width: 50%;
+                height: auto;
+                background-color:#dddddd;
+                border: 2px solid black;
+                text-align: center;
+                padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2><b>Add New Expense</b></h2>
+    <form th:action="@{/addexpense}" th:object="${expense}" method="post">
+        <input type="text" th:field = "*{expense_name}" placeholder = "EXPENSE NAME"  required> <br> <br>
+        <input type="number"  min="0" value="0" step="0.01" onblur="formatAmount(this)" th:field = "*{amount}"  placeholder = "AMOUNT" required> <br> <br>
+        <input type="date"  th:field = "*{date}"  placeholder = DATE required> <br> <br>
+       <textarea  th:field = "*{description}" placeholder="Description"></textarea> <br> <br>
+        <button type="submit">Add Expense</button>
+    </form>
+
+    <script th:src="@{/expense_track_format_amount.js}">
+    </script>
+
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+
+        div.form-container{
+              width: 350px;
+                height: auto;
+                background-color:#dddddd;
+                border: 2px solid black;
+                text-align: center;
+                padding: 20px;
+        }
+    </style>
+</head>
+<body>
+<div th:if="${errorMsg}">
+    <h3 style="color:red;" th:text="${errorMsg}"></h3>
+</div>
+
+<div class="form-container">
+    <form th:action="@{/login}" th:object="${user}" method="post">
+        <input type="text" name="username" placeholder = "USERNAME" required> <br> <br>
+        <input type="password" name="password"  placeholder = "PASSWORD" required> <br> <br>
+        <button type="submit">LOGIN</button>
+        <p> don't have an account ? <a href="/register">SIGN UP</a></p>
+    </form>
+</div>
+
+</body>
+</html>

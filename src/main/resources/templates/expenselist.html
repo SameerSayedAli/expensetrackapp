@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+                display: flex;
+                justify-content: center;
+                align-items: top;
+                height: 100vh;
+                background-color:#dddddd;
+                margin: 0;
+                padding: 20px;
+            }
+        div.form-container{
+              width: 80%;
+                text-align: center;
+                 background-color:#ffffff;
+                padding: 20px;
+        }
+        div.expense-container{
+
+        text-align: left;
+         border-bottom: 1px solid #ccc;
+
+        }
+         .btn{
+          color:white;
+          background-color:green
+
+        }
+
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <h1>Expense List</h1>
+   <div class="expense-container"  th:each="e:${expenseTrackList}">
+       <p> <span th:text="${e.expense_name}" style="color:#7CFC00"></span> </p>
+      <p> <b>Amount:$</b><span th:text="${e.amount}"></span> </p>
+       <p><b>Date:</b> <span th:text="${e.date}"></span> </p> <br>
+       <a th:href="@{'/update/' + ${e.id}}"><button class="btn">Update Expense</button></a> <br> <br>
+   </div>
+</div>
+</body>
+</html>
